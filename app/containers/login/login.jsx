@@ -1,6 +1,5 @@
 import React from 'react';
-import {post} from '../../fetch/post';
-import {get} from '../../fetch/get';
+import {post,get} from '../../fetch/fetch';
 import './login.sass';
 class Login extends React.Component{
     constructor(props,context){
@@ -38,8 +37,9 @@ class Login extends React.Component{
     login() {
         const username = this.state.name;
         const psw = this.state.psw;
-        get('/api/city',{username,psw})
-        console.log(332);
+        post('/api/login',{username,psw}).then(data => {
+            console.log(data);
+        })
     }
 }
 export default Login

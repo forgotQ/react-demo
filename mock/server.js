@@ -16,6 +16,7 @@ router.get('/', function *(next) {
 //     this.body = 'test data 2'
 // });
 router.post('/api/login',function *(next) {
+    console.log(this);
     var username = this.request.username;
     var psw = this.resquest.password;
     if(username=='admin'&&psw == '123456'){
