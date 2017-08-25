@@ -8,6 +8,7 @@ export function get(url) {
             'Accept': 'application/json, text/plain, */*'
         }
     }).then(function (rep) {
+    	consdle.log(rep);
 
    })
 }
