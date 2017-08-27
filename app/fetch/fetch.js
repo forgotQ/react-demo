@@ -25,7 +25,7 @@ export function post(url,params={}) {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            methods:'POST',
+            method:'POST',
             body:JSON.stringify(params)
         }
         fetch(url,option).then(response => response.json()).then(data => {

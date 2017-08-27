@@ -1,9 +1,10 @@
 var app = require('koa')();
 var router = require('koa-router')();
 var mock = require('./mock/index');
-router.get('/', function *(next) {
-    this.body = mock.cityList;
-});
+var koaBody = require('koa-body')();
+// router.get('/', function *(next) {
+//     this.body = mock.cityList;
+// });
 
 // router.get('/api', function *(next) {
 //     this.body = 'test data'
@@ -15,12 +16,13 @@ router.get('/', function *(next) {
 // router.get('/api/2', function *(next) {
 //     this.body = 'test data 2'
 // });
-router.post('/api/login',function *(next) {
-    console.log(this);
-    var username = this.request.username;
-    var psw = this.resquest.password;
+router.post('/api/login',koaBody,function *(next) {
+    var username = this.request.body.username;
+    var psw = this.request.body.psw;
     if(username=='admin'&&psw == '123456'){
-        this.response = mock.login;
+        this.body = mock.login;
+    }else {
+        this.body = mock.error;
     }
 })
 router.get('/api/city',function *(next) {
