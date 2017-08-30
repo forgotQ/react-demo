@@ -16,10 +16,10 @@ class Login extends React.Component{
         return (
             <div className="loginWrapper">
                 <div className="loginName">
-                    <input type="text" placeholder='用户名' onChange={this.changeName.bind(this)}/>
+                    <input type="text" placeholder='用户名' onChange={this.changeName.bind(this)} value={this.state.name}/>
                 </div>
                 <div className="loginName">
-                    <input type="password" placeholder='密码' onChange={this.changePsw.bind(this)} />
+                    <input type="password" placeholder='密码' onChange={this.changePsw.bind(this)} value={this.state.psw}/>
                 </div>
                 <div className="errorInfo">{this.state.error}</div>
                 <div className="loginBtn">
@@ -41,8 +41,9 @@ class Login extends React.Component{
         const username = this.state.name;
         const psw = this.state.psw;
         post('/api/login',{username,psw}).then(data => {
+            console.log(data);
             setCookie('username',username,2);
-            setCookie('isLogin',1,2);
+            setCookie('isLogin','1',2);
             this.setState({
                 error:''
             })

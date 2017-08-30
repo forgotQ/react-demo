@@ -10,7 +10,7 @@ exports.login = Mock.mock({
     }
 })
 exports.error = Mock.mock({
-    code:code.success_error,
+    code:code.error_code,
     msg:"密码错误",
 });
 exports.cityList = Mock.mock({

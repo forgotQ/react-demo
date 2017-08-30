@@ -1,6 +1,8 @@
 import React from 'react'
 import { Router, Route, IndexRoute } from 'react-router'
 
+import {getCookie} from './../util/cookie'
+
 import App from '../containers'
 import Home from '../containers/Home'
 import City from '../containers/City'
@@ -10,8 +12,6 @@ import Detail from '../containers/Detail'
 import NotFound from '../containers/404'
 import Login from '../containers/login/login'
 
-// 如果是大型项目，router部分就需要做更加复杂的配置
-// 参见 https://github.com/reactjs/react-router/tree/master/examples/huge-apps
 
 class RouterMap extends React.Component {
     render() {
@@ -19,7 +19,7 @@ class RouterMap extends React.Component {
             <Router history={this.props.history}>
                 <Route path='/' component={App}>
                     <IndexRoute component={Login}/>
-                    <Route path='/home' component={Home}/>
+                    <Route path='/home' component={Home} onEnter={this.requireAuth}/>
                     <Route path='/login' component={Login}/>
                     <Route path='/city' component={City}/>
                     <Route path='/User' component={User}/>
@@ -29,6 +29,11 @@ class RouterMap extends React.Component {
                 </Route>
             </Router>
         )
+    }
+    requireAuth(nextState,replace) {
+        if(!getCookie('isLogin')){
+            replace({pathname:'/login'});
+        }
     }
 }
 
