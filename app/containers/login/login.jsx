@@ -1,7 +1,11 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux'
 import {post,get} from '../../fetch/fetch';
-import {getCookie,setCookie} from "../../util/cookie"
+import {getCookie,setCookie} from "../../util/cookie";
+import * as userinfoAction from './../../actions/userinfo'
 import './login.sass';
+
 class Login extends React.Component{
     constructor(props,context){
         super(props,context);
@@ -25,6 +29,7 @@ class Login extends React.Component{
                 <div className="loginBtn">
                     <input type="button" value='登录' onClick={this.login.bind(this)}/>
                 </div>
+                <div>{this.props.userinfo.username}</div>
             </div>
         )
     }
@@ -46,6 +51,7 @@ class Login extends React.Component{
             this.setState({
                 error:''
             })
+            this.props.userinfoAction.login({username,isLogin:'1'});
             this.context.router.push('/home');
         })
         //     .catch(e => {
@@ -57,7 +63,18 @@ class Login extends React.Component{
         // })
     }
 }
+// 使用context跳转路由
 Login.contextTypes = {
     router:React.PropTypes.object
 }
-export default Login
+const mapStateToProps = (state) => {
+    return {
+        userinfo:state.userinfo
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return{
+        userinfoAction:bindActionCreators(userinfoAction,dispatch)
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Login)
