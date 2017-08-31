@@ -41,20 +41,20 @@ class Login extends React.Component{
         const username = this.state.name;
         const psw = this.state.psw;
         post('/api/login',{username,psw}).then(data => {
-            console.log(data);
-            setCookie('username',username,2);
-            setCookie('isLogin','1',2);
+             setCookie('username',username,2);
+             setCookie('isLogin','1',2);
             this.setState({
                 error:''
             })
-            this.context.router.push('/city');
-        }).catch(e => {
-            this.setState({
-                error:'密码输入错误',
-                name:'',
-                psw:''
-            })
+            this.context.router.push('/home');
         })
+        //     .catch(e => {
+        //         this.setState({
+        //             error:'密码输入错误',
+        //             name:'',
+        //             psw:''
+        //         })
+        // })
     }
 }
 Login.contextTypes = {

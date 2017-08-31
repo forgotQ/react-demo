@@ -1,5 +1,6 @@
 import React from 'react'
 import { Router, Route, IndexRoute } from 'react-router'
+import Nprogress from 'nprogress'
 
 import {getCookie} from './../util/cookie'
 
@@ -18,7 +19,7 @@ class RouterMap extends React.Component {
         return (
             <Router history={this.props.history}>
                 <Route path='/' component={App}>
-                    <IndexRoute component={Login}/>
+                    <IndexRoute component={Login} onLeave={this.progress}/>
                     <Route path='/home' component={Home} onEnter={this.requireAuth}/>
                     <Route path='/login' component={Login}/>
                     <Route path='/city' component={City}/>
@@ -33,7 +34,12 @@ class RouterMap extends React.Component {
     requireAuth(nextState,replace) {
         if(!getCookie('isLogin')){
             replace({pathname:'/login'});
+        }else {
+
         }
+    }
+    progress() {
+        NProgress.start();
     }
 }
 
