@@ -29,7 +29,6 @@ class Login extends React.Component{
                 <div className="loginBtn">
                     <input type="button" value='登录' onClick={this.login.bind(this)}/>
                 </div>
-                <div>{this.props.userinfo.username}</div>
             </div>
         )
     }
@@ -54,13 +53,13 @@ class Login extends React.Component{
             this.props.userinfoAction.login({username,isLogin:'1'});
             this.context.router.push('/home');
         })
-        //     .catch(e => {
-        //         this.setState({
-        //             error:'密码输入错误',
-        //             name:'',
-        //             psw:''
-        //         })
-        // })
+        .catch(e => {
+            this.setState({
+                error:'密码输入错误',
+                name:'',
+                psw:''
+            })
+        })
     }
 }
 // 使用context跳转路由

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { hashHistory } from 'react-router'
 import configureStore from './store/configureStore'
 
-import './static/css/common.less'
+import './static/css/common.sass'
 
 // 创建 Redux 的 store 对象
 const store = configureStore()
