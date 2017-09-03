@@ -1,0 +1,19 @@
+//app组件路由动画的样式
+body
+  background: #cccccc
+//.page-appear
+//  opacity: 0.05
+//  background: #ff0000
+//  transition: all 0.5s ease-in
+.page-enter
+  opacity: 0.1
+  transition: opacity .5s ease-in
+  &.page-enter-active
+    opacity: 1
+    transition: opacity .5s ease-in
+.page-leave
+  opacity: 1
+  transition: opacity .5s ease-in
+  &.page-leave-active
+    opacity: 0.02
+    transition: opacity .5s ease-in

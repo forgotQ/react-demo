@@ -1,12 +1,12 @@
 import React from 'react'
 import { Router, Route, IndexRoute } from 'react-router'
-
+import nprogress from 'nprogress'
 
 import {getCookie} from './../util/cookie'
 
 import App from '../containers'
 import Home from '../containers/Home'
-import City from '../containers/City'
+
 import User from '../containers/User'
 import Search from '../containers/Search'
 import Detail from '../containers/Detail'
@@ -19,13 +19,14 @@ class RouterMap extends React.Component {
         return (
             <Router history={this.props.history}>
                 <Route path='/' component={App}>
-                    <IndexRoute component={Login}/>
-                    <Route path='/home' component={Home} onEnter={this.requireAuth}/>
+                    <IndexRoute component={Login} onLeave={this.startProgress}/>
+                    <Route path='/home' component={Home} onEnter={this.requireAuth}>
+                        <Route path='city' getComponent={city} onEnter={this.doneProgress}/>
+                        <Route path='User' component={User}/>
+                        <Route path='search/:type(/:keyword)' component={Search}/>
+                        <Route path='detail/:id' component={Detail}/>
+                    </Route>
                     <Route path='/login' component={Login}/>
-                    <Route path='/city' component={City}/>
-                    <Route path='/User' component={User}/>
-                    <Route path='/search/:type(/:keyword)' component={Search}/>
-                    <Route path='/detail/:id' component={Detail}/>
                     <Route path='*' component={NotFound}/>
                 </Route>
             </Router>
@@ -38,6 +39,18 @@ class RouterMap extends React.Component {
 
         }
     }
+    startProgress() {
+        nprogress.start()
+    }
+    doneProgress() {
+        nprogress.done(true);
+    }
 }
 
+const city = (location,cb) => {
+    require.ensure([],require => {
+        cb(null,require('../containers/City').default,'city')
+    })
+}
+//这里使用了按需加载
 export default RouterMap
