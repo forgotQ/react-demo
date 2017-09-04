@@ -20,10 +20,10 @@ class Login extends React.Component{
         return (
             <div className="loginWrapper">
                 <div className="loginName">
-                    <input type="text" placeholder='用户名' onChange={this.changeName.bind(this)} value={this.state.name}/>
+                    <input className="loginInput" type="text" placeholder='用户名' onChange={this.changeName.bind(this)} value={this.state.name}/>
                 </div>
                 <div className="loginName">
-                    <input type="password" placeholder='密码' onChange={this.changePsw.bind(this)} value={this.state.psw}/>
+                    <input className="loginInput" type="password" placeholder='密码' onChange={this.changePsw.bind(this)} value={this.state.psw}/>
                 </div>
                 <div className="errorInfo">{this.state.error}</div>
                 <div className="loginBtn">
@@ -51,7 +51,7 @@ class Login extends React.Component{
                 error:''
             })
             this.props.userinfoAction.login({username,isLogin:'1'});
-            this.context.router.push('/home/city');
+            //this.context.router.push('/home/city');
         })
         .catch(e => {
             this.setState({

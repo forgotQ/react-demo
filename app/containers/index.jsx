@@ -2,7 +2,7 @@ import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import '../static/css/sass/animate.sass'
+import '../static/sass/animate.sass'
 
 class App extends React.Component {
     constructor(props, context) {

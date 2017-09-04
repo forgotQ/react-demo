@@ -1,3 +1,4 @@
+@import "../../static/sass/mixin"
 .loginWrapper
   position: absolute
   left: 0
@@ -10,10 +11,22 @@
   background: #f60
   border: 1px solid #ccc
   .loginName,.loginName,.loginBtn
+    box-sizing: border-box
     width: 240px
-    height: 40px
-    line-height: 40px
-    padding: 0 30px
-    margin: auto
+    margin: 20px auto
+    text-align: center
+    .loginInput
+      border: 1px solid rgba(7,17,27,0)
+      border-radius: 3px
+      outline: none
+      height: 38px
+      line-height: 38px
+      font-size: 16px
+      &:hover
+        border: 1px solid #ff0000
+    input[type='button']
+      @include loginBtn
   .errorInfo
+    width: 240px
+    margin: auto
     color: #ff0000
