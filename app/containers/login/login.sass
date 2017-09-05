@@ -10,20 +10,58 @@
   height: 300px
   background: #f60
   border: 1px solid #ccc
-  .loginName,.loginName,.loginBtn
-    box-sizing: border-box
+  .loginName
+    display: flex
+    flex-direction: column-reverse
+    align-items: flex-start
     width: 240px
     margin: 20px auto
     text-align: center
     .loginInput
-      border: 1px solid rgba(7,17,27,0)
-      border-radius: 3px
+      border: none
       outline: none
-      height: 38px
+      order: 10
+      border-bottom: 1px solid rgba(7,17,27,0)
+      width: 100%
       line-height: 38px
       font-size: 16px
-      &:hover
-        border: 1px solid #ff0000
+      text-indent: 10px
+      transition: all .2s
+      &::-webkit-input-placeholder
+        opacity: 0
+      &::-moz-placeholder
+        opacity: 0
+      &:-ms-input-placeholder
+        opacity: 0
+      &:focus
+        border: 1px solid #fff
+        ~ div
+          width: 100%
+        + label
+          color: #ffffff
+          transform: translate(10px) scale(0.9)
+      &:not(:placeholder-shown)~ div
+        width: 100%
+      &:not(:placeholder-shown)+ label
+        color: #ffffff
+        transform: translate(10px) scale(0.9)
+    label
+      transition: all .2s
+      order: 100
+      color: #cccccc
+      transform: translate(10px,25px)
+      transform-origin: left bottom
+    .bottom-line
+      width: 0
+      height: 2px
+      order: 2
+      transition: all .2s
+      background:  rgb(101, 141, 181)
+  .loginBtn
+    width: 240px
+    display: flex
+    margin: 20px auto
+    justify-content: center
     input[type='button']
       @include loginBtn
   .errorInfo

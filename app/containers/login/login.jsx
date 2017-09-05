@@ -20,7 +20,9 @@ class Login extends React.Component{
         return (
             <div className="loginWrapper">
                 <div className="loginName">
-                    <input className="loginInput" type="text" placeholder='用户名' onChange={this.changeName.bind(this)} value={this.state.name}/>
+                    <input className="loginInput"  id='username' type="text" placeholder='用户名' onChange={this.changeName.bind(this)} value={this.state.name}/>
+                    <label htmlFor="username">用户名</label>
+                    <div className="bottom-line"></div>
                 </div>
                 <div className="loginName">
                     <input className="loginInput" type="password" placeholder='密码' onChange={this.changePsw.bind(this)} value={this.state.psw}/>
