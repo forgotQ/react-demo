@@ -1,5 +1,7 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import LeftSide from '../LeftSide'
+import Header from '../Header'
 
 class Home extends React.Component {
     constructor(props, context) {
@@ -8,9 +10,15 @@ class Home extends React.Component {
     }
     render() {
         return (
-            <div>
-                {this.props.children}
-            </div>
+           <div>
+               <Header/>
+               <div>
+                   <LeftSide/>
+                   <div>
+                       {this.props.children}
+                   </div>
+               </div>
+           </div>
         )
     }
 }
