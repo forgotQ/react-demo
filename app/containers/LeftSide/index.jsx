@@ -22,7 +22,7 @@ class LeftSide extends React.Component{
                 this.state.listData.map((item,index) => {
                     return (
                         <div className="menu" key={index}>
-                            <div className="menuName">{item.pName}</div>
+                            <div className="menuName"><span>{item.pName}</span></div>
                             <ul className="submenu">{item.name.map((subItem,subIndex) =>{
                                 return (
                                     <li key={subIndex}><Link to={subItem.path}>{subItem.title}</Link></li>
