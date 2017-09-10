@@ -25,8 +25,16 @@ router.post('/api/login',koaBody,function *(next) {
         this.body = mock.error;
     }
 })
-router.get('/api/city',function *(next) {
-    this.body = mock.cityList;
+router.get('/api/city/:id',function *(next) {
+    var id = this.params.id;
+    if(id==0){
+        this.body = mock.cityList;
+    }else if(id && id!=0) {
+        var data = mock.cityList.data;
+        this.body = data.filter(function (item) {
+            return item.code == id
+        })
+    }
 })
 
 app.use(router.routes())

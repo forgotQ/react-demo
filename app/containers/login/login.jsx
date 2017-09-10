@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'
-import {post,get} from '../../fetch/fetch';
+import {post} from '../../fetch/fetch';
 import {getCookie,setCookie} from "../../util/cookie";
 import * as userinfoAction from './../../actions/userinfo'
 import './login.sass';

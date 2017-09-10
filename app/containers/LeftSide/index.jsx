@@ -13,7 +13,8 @@ class LeftSide extends React.Component{
                     {title:'新闻',path:'/news'},
                     {title:'商机',path:'business'},
                 ]},
-            ]
+            ],
+            index:null
         }
     }
     render() {
@@ -22,8 +23,8 @@ class LeftSide extends React.Component{
                 this.state.listData.map((item,index) => {
                     return (
                         <div className="menu" key={index}>
-                            <div className="menuName"><span>{item.pName}</span></div>
-                            <ul className="submenu">{item.name.map((subItem,subIndex) =>{
+                            <div className="menuName" onClick={this.showList.bind(this,index)}>{item.pName}</div>
+                            <ul className={'submenu '+(index===this.state.index?'full':'')}>{item.name.map((subItem,subIndex) =>{
                                 return (
                                     <li key={subIndex}><Link to={subItem.path}>{subItem.title}</Link></li>
                                 )
@@ -34,6 +35,17 @@ class LeftSide extends React.Component{
             }
             </div>
         )
+    }
+    showList(index) {
+        if(this.state.index===index){
+            this.setState({
+                index:null
+            })
+            return;
+        }
+        this.setState({
+            index
+        })
     }
 }
 export default LeftSide
