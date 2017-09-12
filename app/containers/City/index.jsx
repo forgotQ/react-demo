@@ -12,7 +12,8 @@ class City extends React.Component {
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
         this.state={
             province:[],
-            city:[]
+            city:[],
+            selectIndex:false
         }
     }
     render() {
@@ -27,7 +28,7 @@ class City extends React.Component {
                     })}
                 </select>
                 <select onChange={this.checkCity.bind(this)}>
-                    <option value="city">请选择城市</option>
+                    <option value="city" selected='true'>请选择城市</option>
                     {this.state.city.map((item,index) => {
                         return(
                             <option value={item.id} key={index}>{item.name}</option>
@@ -51,8 +52,10 @@ class City extends React.Component {
         get(`/api/city/${val}`).then((data) => {
             const city = [].concat(data);
             this.setState({
-                city
+                city,
+                selectIndex:true
             })
+
         })
         // this.props.cityAction.selectProvince({'province':val})
     }
