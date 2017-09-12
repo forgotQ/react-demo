@@ -1,8 +1,10 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import {get} from '../../fetch/fetch';
-
-import 'city.sass'
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux'
+import * as cityAction from './../../actions/city'
+import './city.sass'
 
 class City extends React.Component {
     constructor(props, context) {
@@ -15,39 +17,60 @@ class City extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="city-wrapper">
                 <select onChange={this.checkProvince.bind(this)}>
                     <option value="province">请选择省份</option>
                     {this.state.province.map((item,index) => {
                         return(
-                            <option value={item.code} key={index}>{item.name}</option>
+                            <option value={item.id} key={index}>{item.name}</option>
                         )
                     })}
                 </select>
-                <select>
+                <select onChange={this.checkCity.bind(this)}>
                     <option value="city">请选择城市</option>
+                    {this.state.city.map((item,index) => {
+                        return(
+                            <option value={item.id} key={index}>{item.name}</option>
+                        )
+                    })}
                 </select>
+                <span>1000</span>
             </div>
         )
     }
     componentWillMount() {
         get('/api/city/0').then((data) => {
-            this.setState={
+            this.setState({
                 province:data.data
-            }
+            })
         })
     }
     checkProvince(e) {
         const val = e.target.value;
         if (val === 'province') return;
         get(`/api/city/${val}`).then((data) => {
-            this.setState={
-                city:data.data
-            }
+            const city = [].concat(data);
+            this.setState({
+                city
+            })
         })
+        // this.props.cityAction.selectProvince({'province':val})
     }
-
-
+    checkCity(e) {
+        const val = e.target.value;
+        if(val === 'city') return;
+        // this.props.cityAction.selectCity({'city':val});
+    }
 }
-
-export default City
+const mapStateToProps = state => {
+    return {
+        selectProvince:state.selectProvince,
+        selectCity:state.selectCity
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return{
+        cityAction:bindActionCreators(cityAction,dispatch)
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(City)

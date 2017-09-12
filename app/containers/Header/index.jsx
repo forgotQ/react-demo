@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux'
-
+import City from './../City'
 import './header.sass';
 
 class Header extends React.Component{
@@ -13,10 +13,11 @@ class Header extends React.Component{
         return(
             <div>
                 <div className="header">
-                   <span>
+                   <div className="userinfo">
                         <span>用户名：</span>
                         <span>{this.props.userinfo.username}</span>
-                   </span>
+                   </div>
+                    <City/>
                 </div>
             </div>
         )

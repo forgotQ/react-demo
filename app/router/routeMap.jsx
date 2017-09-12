@@ -21,8 +21,7 @@ class RouterMap extends React.Component {
                 <Route path='/' component={App}>
                     <IndexRoute component={Login} onLeave={this.startProgress}/>
                     <Route path='/home' component={Home} onEnter={this.requireAuth}>
-                        <Route path='city' getComponent={city} onEnter={this.doneProgress}/>
-                        <Route path='User' component={User}/>
+                        <Route path='user' component={User}/>
                         <Route path='search/:type(/:keyword)' component={Search}/>
                         <Route path='detail/:id' component={Detail}/>
                     </Route>
@@ -47,10 +46,10 @@ class RouterMap extends React.Component {
     }
 }
 
-const city = (location,cb) => {
-    require.ensure([],require => {
-        cb(null,require('../containers/City').default,'city')
-    })
-}
+// const city = (location,cb) => {
+//     require.ensure([],require => {
+//         cb(null,require('../containers/City').default,'city')
+//     })
+// }
 //这里使用了按需加载
 export default RouterMap

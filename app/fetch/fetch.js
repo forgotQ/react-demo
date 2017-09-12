@@ -34,7 +34,7 @@ export function post(url,params={}) {
             }else {
                 reject(data);
             }
-        }).catch(erroe => alert("网络出错了!"));
+        }).catch(error => alert("网络出错了!"));
     })
     return defer
 }

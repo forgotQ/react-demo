@@ -30,10 +30,13 @@ router.get('/api/city/:id',function *(next) {
     if(id==0){
         this.body = mock.cityList;
     }else if(id && id!=0) {
-        var data = mock.cityList.data;
+        var data = mock.cityList.data
+        data.forEach(function (item) {
+            item.code = 0;
+        });
         this.body = data.filter(function (item) {
-            return item.code == id
-        })
+            return item.id == id
+        })[0]
     }
 })
 

@@ -53,7 +53,7 @@ class Login extends React.Component{
                 error:''
             })
             this.props.userinfoAction.login({username,isLogin:'1'});
-            this.context.router.push('/home/city');
+            this.context.router.push('/home/user');
         })
         .catch(e => {
             this.setState({
