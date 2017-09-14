@@ -13,7 +13,7 @@ class City extends React.Component {
         this.state={
             province:[],
             city:[],
-            selectIndex:false
+            selectIndex:'city'
         }
     }
     render() {
@@ -27,15 +27,16 @@ class City extends React.Component {
                         )
                     })}
                 </select>
-                <select onChange={this.checkCity.bind(this)}>
-                    <option value="city" selected='true'>请选择城市</option>
+                <select onChange={this.checkCity.bind(this)} value={this.state.selectIndex}>
+                    <option value="city">请选择城市</option>
                     {this.state.city.map((item,index) => {
                         return(
                             <option value={item.id} key={index}>{item.name}</option>
                         )
                     })}
                 </select>
-                <span>1000</span>
+                <span>{this.props.selectProvince}</span>
+                <span>{this.props.selectCity}</span>
             </div>
         )
     }
@@ -53,16 +54,19 @@ class City extends React.Component {
             const city = [].concat(data);
             this.setState({
                 city,
-                selectIndex:true
+                selectIndex:'city'
             })
 
         })
-        // this.props.cityAction.selectProvince({'province':val})
+        this.props.cityAction.selectProvince({'province':val})
     }
     checkCity(e) {
         const val = e.target.value;
         if(val === 'city') return;
-        // this.props.cityAction.selectCity({'city':val});
+        this.setState({
+           selectIndex:val
+        });
+        this.props.cityAction.selectCity({'city':val});
     }
 }
 const mapStateToProps = state => {
