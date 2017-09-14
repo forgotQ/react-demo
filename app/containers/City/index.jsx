@@ -35,8 +35,7 @@ class City extends React.Component {
                         )
                     })}
                 </select>
-                <span>{this.props.selectProvince}</span>
-                <span>{this.props.selectCity}</span>
+                <span>{this.props.selectCity.city}</span>
             </div>
         )
     }
@@ -58,11 +57,10 @@ class City extends React.Component {
             })
 
         })
-        this.props.cityAction.selectProvince({'province':val})
+      this.props.cityAction.selectProvince({'province':val});
     }
     checkCity(e) {
         const val = e.target.value;
-        if(val === 'city') return;
         this.setState({
            selectIndex:val
         });

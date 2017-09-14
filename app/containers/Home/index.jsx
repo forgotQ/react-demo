@@ -2,7 +2,7 @@ import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import LeftSide from '../LeftSide'
 import Header from '../Header'
-
+import './home.sass'
 class Home extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -10,11 +10,11 @@ class Home extends React.Component {
     }
     render() {
         return (
-           <div>
+           <div className="container">
                <Header/>
-               <div>
+               <div className="wrapper">
                    <LeftSide/>
-                   <div>
+                   <div className="content">
                        {this.props.children}
                    </div>
                </div>
