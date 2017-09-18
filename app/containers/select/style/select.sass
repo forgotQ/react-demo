@@ -6,6 +6,7 @@
   border: 1px solid rgba(0,0,0,.5)
   border-radius: 4px
   cursor: pointer
+  background-color: #fff
   &:hover
     border: 1px solid #108ee9
   &:focus
@@ -40,7 +41,7 @@
     background-color: #ffffff
     position: absolute
     left: 0
-    bottom: -28px
+    top: 100%
     width: 200px
     max-height: 100px
     color: rgba(0,0,0,.65)
@@ -52,7 +53,6 @@
     overflow-x: hidden
     outline: none
     list-style: none
-    cursor: pointer
     .Zselect-selected-item-li
       height: 28px
       width: 200px
@@ -61,17 +61,19 @@
       white-space: nowrap
       line-height: 28px
       transition: background-color .2s linear
+      font-size: 12px
+      text-indent: 10px
       &:hover
         background-color: #ecf6fd
       &.Zselect-selected-item-li-disabled
         color: rgba(0,0,0,.2)
         background-color: #fff
         cursor: not-allowed
-      &:hover
-        background-color: #fff
+        &:hover
+          background-color: #fff
       &.Zselect-selected-item-li-selected
         background-color: #f7f7f7
         &:hover
           background-color: #f7f7f7
-
-
+.Z-none
+  display: none
