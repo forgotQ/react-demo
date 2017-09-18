@@ -17,11 +17,11 @@
     width: 240px
     margin: 20px auto
     text-align: center
+    box-sizing: border-box
     .loginInput
       border: none
       outline: none
       order: 10
-      border-bottom: 1px solid rgba(7,17,27,0)
       width: 100%
       line-height: 38px
       font-size: 16px
@@ -34,7 +34,7 @@
       &:-ms-input-placeholder
         opacity: 0
       &:focus
-        border: 1px solid #fff
+        border: none
         ~ div
           width: 100%
         + label

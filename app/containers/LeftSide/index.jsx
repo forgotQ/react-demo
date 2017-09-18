@@ -68,7 +68,7 @@ class LeftSide extends React.Component{
                     return (
                         <div className="menu" key={index}>
                             <div className="menuName" onClick={this.showList.bind(this,index)}>{item.pName}</div>
-                            <ul className={'submenu '+(index===this.state.index?'full':'')}>{item.name.map((subItem,subIndex) =>{
+                            <ul className={'submenu '+(index===this.state.index?'full':'')} style={item.name.length!==0?({maxHeight:'500px',overflowY:'auto'}):{}}>{item.name.map((subItem,subIndex) =>{
                                 return (
                                     <li key={subIndex}><Link to={subItem.path}>{subItem.title}</Link></li>
                                 )

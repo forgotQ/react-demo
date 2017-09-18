@@ -34,8 +34,6 @@ class RouterMap extends React.Component {
     requireAuth(nextState,replace) {
         if(!getCookie('isLogin')){
             replace({pathname:'/login'});
-        }else {
-
         }
     }
     startProgress() {
