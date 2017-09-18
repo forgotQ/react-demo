@@ -1,0 +1,77 @@
+.Zselect-wrapper
+  position: relative
+  box-sizing: border-box
+  width: 200px
+  height: 34px
+  border: 1px solid rgba(0,0,0,.5)
+  border-radius: 4px
+  cursor: pointer
+  &:hover
+    border: 1px solid #108ee9
+  &:focus
+    outline: none
+    border: 1px solid #108ee9
+    box-shadow: 0 0 0 2px rgba(16,142,233,.2)
+  .Zselect-selected
+    margin-left: 8px
+    display: inline-block
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
+    vertical-align: bottom
+    line-height: 1
+    max-width: 80%
+    color: rgba(0,0,0,.65)
+    padding-right: 14px
+    font-size: 12px
+  .Zselect-moreunfold
+    display: inline-block
+    position: absolute
+    top: 50%
+    right: 8px
+    margin-top: -6px
+    width: 12px
+    height: 12px
+    vertical-align: bottom
+    line-height: 1
+    font-size: 12px
+    transition: all .2s linear
+  .Zselect-selected-item
+    background-color: #ffffff
+    position: absolute
+    left: 0
+    bottom: -28px
+    width: 200px
+    max-height: 100px
+    color: rgba(0,0,0,.65)
+    z-index: 100
+    box-sizing: border-box
+    box-shadow: 0 1px 6px rgba(0,0,0,.2)
+    border-radius: 4px
+    overflow: auto
+    overflow-x: hidden
+    outline: none
+    list-style: none
+    cursor: pointer
+    .Zselect-selected-item-li
+      height: 28px
+      width: 200px
+      text-overflow: ellipsis
+      overflow: hidden
+      white-space: nowrap
+      line-height: 28px
+      transition: background-color .2s linear
+      &:hover
+        background-color: #ecf6fd
+      &.Zselect-selected-item-li-disabled
+        color: rgba(0,0,0,.2)
+        background-color: #fff
+        cursor: not-allowed
+      &:hover
+        background-color: #fff
+      &.Zselect-selected-item-li-selected
+        background-color: #f7f7f7
+        &:hover
+          background-color: #f7f7f7
+
+

@@ -19,23 +19,24 @@ class City extends React.Component {
     render() {
         return (
             <div className="city-wrapper">
-                <select onChange={this.checkProvince.bind(this)}>
-                    <option value="province">请选择省份</option>
-                    {this.state.province.map((item,index) => {
-                        return(
-                            <option value={item.id} key={index}>{item.name}</option>
-                        )
-                    })}
-                </select>
-                <select onChange={this.checkCity.bind(this)} value={this.state.selectIndex}>
-                    <option value="city">请选择城市</option>
-                    {this.state.city.map((item,index) => {
-                        return(
-                            <option value={item.id} key={index}>{item.name}</option>
-                        )
-                    })}
-                </select>
-                <span>{this.props.selectCity.city}</span>
+               <div>
+                   <select onChange={this.checkProvince.bind(this)}>
+                       <option value="province">请选择省份</option>
+                       {this.state.province.map((item,index) => {
+                           return(
+                               <option value={item.id} key={index}>{item.name}</option>
+                           )
+                       })}
+                   </select>
+                   <select onChange={this.checkCity.bind(this)} value={this.state.selectIndex}>
+                       <option value="city">请选择城市</option>
+                       {this.state.city.map((item,index) => {
+                           return(
+                               <option value={item.id} key={index}>{item.name}</option>
+                           )
+                       })}
+                   </select>
+               </div>
             </div>
         )
     }
