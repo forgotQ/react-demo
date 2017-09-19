@@ -7,6 +7,8 @@
   border-radius: 4px
   cursor: pointer
   background-color: #fff
+  unselectable: on
+  user-select: none
   &:hover
     border: 1px solid #108ee9
   &:focus
@@ -41,9 +43,9 @@
     background-color: #ffffff
     position: absolute
     left: 0
-    top: 100%
+    top: 108%
     width: 200px
-    max-height: 100px
+    height: 0
     color: rgba(0,0,0,.65)
     z-index: 100
     box-sizing: border-box
@@ -51,8 +53,10 @@
     border-radius: 4px
     overflow: auto
     overflow-x: hidden
+    margin-right: -18px
     outline: none
     list-style: none
+    transition: all .3s linear
     .Zselect-selected-item-li
       height: 28px
       width: 200px
@@ -75,5 +79,11 @@
         background-color: #f7f7f7
         &:hover
           background-color: #f7f7f7
-.Z-none
-  display: none
+  &.Zselect-wrapper-open
+    .Zselect-moreunfold
+      transform-origin: center
+      transform: rotate(180deg)
+    .Zselect-selected-item
+      height: 100px
+.Z-height0
+  height: 0

@@ -10,12 +10,18 @@ class Zselect extends React.Component{
     }
     render(){
         return(
-            <div className="Zselect-wrapper" tabIndex='0' onClick={this.selectChanged.bind(this)}>
+            <div className={"Zselect-wrapper "+(this.state.open?"Zselect-wrapper-open":"Zselect-wrapper-close")} tabIndex='0' onClick={this.selectChanged.bind(this)}>
                 <span className="Zselect-selected">选择框选择</span>
                 <svg className="Zselect-moreunfold" aria-hidden="true">
                     <use xlinkHref="#icon-moreunfold"></use>
                 </svg>
-                <ul className={"Zselect-selected-item  "+this.state.open?"":"Z-none"}>
+                <ul className={"Zselect-selected-item  "+(this.state.open?"":"Z-height0")}>
+                    <li className="Zselect-selected-item-li">第一个</li>
+                    <li className="Zselect-selected-item-li">第一个</li>
+                    <li className="Zselect-selected-item-li">第一个</li>
+                    <li className="Zselect-selected-item-li">第一个</li>
+                    <li className="Zselect-selected-item-li">第一个</li>
+                    <li className="Zselect-selected-item-li">第一个</li>
                     <li className="Zselect-selected-item-li">第一个</li>
                     <li className="Zselect-selected-item-li">第一个</li>
                     <li className="Zselect-selected-item-li">第一个</li>
@@ -24,6 +30,9 @@ class Zselect extends React.Component{
         )
     }
     selectChanged(e) {
-
+        this.setState(ov => ({
+            open : !ov.open
+        }));
+        const outer = e.offsetX;
     }
 }export default Zselect
