@@ -1,30 +1,25 @@
 import React from 'react';
 import '../js/iconfont'
 import '../style/select.sass'
-class Zselect extends React.Component{
+export class Zselect extends React.Component{
     constructor(props){
         super(props)
         this.state = {
-            open:false
+            open:false,
         }
     }
     render(){
         return(
-            <div className={"Zselect-wrapper "+(this.state.open?"Zselect-wrapper-open":"Zselect-wrapper-close")} tabIndex='0' onClick={this.selectChanged.bind(this)}>
+            <div tabIndex='0'
+                 className={"Zselect-wrapper "+(this.state.open?"Zselect-wrapper-open":"Zselect-wrapper-close")}
+                 onClick={this.selectChanged.bind(this)}
+                 onBlur={this.selectBlur.bind(this)}>
                 <span className="Zselect-selected">选择框选择</span>
                 <svg className="Zselect-moreunfold" aria-hidden="true">
                     <use xlinkHref="#icon-moreunfold"></use>
                 </svg>
                 <ul className={"Zselect-selected-item  "+(this.state.open?"":"Z-height0")}>
-                    <li className="Zselect-selected-item-li">第一个</li>
-                    <li className="Zselect-selected-item-li">第一个</li>
-                    <li className="Zselect-selected-item-li">第一个</li>
-                    <li className="Zselect-selected-item-li">第一个</li>
-                    <li className="Zselect-selected-item-li">第一个</li>
-                    <li className="Zselect-selected-item-li">第一个</li>
-                    <li className="Zselect-selected-item-li">第一个</li>
-                    <li className="Zselect-selected-item-li">第一个</li>
-                    <li className="Zselect-selected-item-li">第一个</li>
+                    {this.props.children}
                 </ul>
             </div>
         )
@@ -33,6 +28,19 @@ class Zselect extends React.Component{
         this.setState(ov => ({
             open : !ov.open
         }));
-        const outer = e.offsetX;
     }
-}export default Zselect
+    selectBlur() {
+        this.setState({
+            open:false
+        })
+    }
+}
+
+export const Zoption = (props) => {
+    return(
+        <li className="Zselect-selected-item-li">第一个</li>
+    )
+}
+Zselect.propTypes = {
+    children:React.PropTypes.instanceOf(Zoption).isRequired
+}
