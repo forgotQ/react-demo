@@ -2,6 +2,7 @@ var app = require('koa')();
 var router = require('koa-router')();
 var mock = require('./mock/index');
 var koaBody = require('koa-body')();
+var path = require('path');
 // router.get('/', function *(next) {
 //     this.body = mock.cityList;
 // });
@@ -39,7 +40,6 @@ router.get('/api/city/:id',function *(next) {
         })[0]
     }
 })
-
 app.use(router.routes())
    .use(router.allowedMethods());
 
