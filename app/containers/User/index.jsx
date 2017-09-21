@@ -11,11 +11,7 @@ class User extends React.Component {
             <div>
                 <h1>User</h1>
                 <Zselect>
-                    <Zoption>第一个</Zoption>
-                    <Zoption>第一个</Zoption>
-                    <Zoption>第一个</Zoption>
-                    <Zoption>第一个</Zoption>
-                    <Zoption>第一个</Zoption>
+                    <Zoption value="1">第一个</Zoption>
                 </Zselect>
             </div>
         )

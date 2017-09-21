@@ -14,11 +14,13 @@ export class Zselect extends React.Component{
                  className={"Zselect-wrapper "+(this.state.open?"Zselect-wrapper-open":"Zselect-wrapper-close")}
                  onClick={this.selectChanged.bind(this)}
                  onBlur={this.selectBlur.bind(this)}>
-                <span className="Zselect-selected">{this.state.selectText}</span>
+                <span className="Zselect-selected">
+                    {this.state.selectText}
+                </span>
                 <svg className="Zselect-moreunfold" aria-hidden="true">
                     <use xlinkHref="#icon-moreunfold"></use>
                 </svg>
-                <ul className={"Zselect-selected-item  "+(this.state.open?"":"Z-height0")}>
+                <ul className={"Zselect-selected-item  "+(this.state.open?"":"Z-height0")} ref={this.ulDom.bind(this)}>
                     {this.props.children}
                 </ul>
             </div>
@@ -29,15 +31,14 @@ export class Zselect extends React.Component{
         this.setState(ov => ({
             open : !ov.open
         }));
-        const isSelected = el.getAttribute('disabled') || el.getAttribute('selected');
-        if(el.nodeName === 'li' && !isSelected){
+        const isSelected = el.getAttribute('disabled');
+        if(el.nodeName === 'LI' && !isSelected){
             this.setState({
                 selectText: el.innerHTML,
-                selectVal: el.getAttribute('value'),
+                selectValue: el.getAttribute('value'),
                 defaultValue: ''
             });
         }
-        console.log(e.target.nodeName);
         console.log(this.state);
     }
     selectBlur() {
@@ -45,14 +46,31 @@ export class Zselect extends React.Component{
             open:false
         })
     }
-    componentWillMount(){
-        this.setState({
-            defaultValue:this.props.defaultValue
+    ulDom(el) {
+        const elList = [].slice.call(el.childNodes);
+        elList.forEach(item => {
+            if(item.nodeName === 'LI'){
+
+            }
         })
+        let {defaultValue} = this.props
+        if(defaultValue){
+            this.setState({
+                selectValue:defaultValue
+            })
+        }
+        // this.setState({
+        //     selectText: el.innerHTML,
+        //     selectValue: el.getAttribute('value'),
+        //     defaultValue: ''
+        // });
+    }
+    componentWillMount(){
+
     }
 }
 export const Zoption = (props) => {
-    const {value,selected,disabled,children} = props;
+    const {value,disabled,children} = props;
     return(
         <li className={"Zselect-selected-item-li "+(disabled?"Zselect-selected-item-li-disabled":"")}
             value={value}
@@ -64,6 +82,6 @@ export const Zoption = (props) => {
 Zselect.propTypes = {
     onChange: React.PropTypes.func
 }
-Zoption.propTypes = {
-    disabled: React.PropTypes.boolean
-}
+// Zoption.propTypes = {
+//     disabled: React.PropTypes.boolean
+// }
