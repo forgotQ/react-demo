@@ -20,7 +20,7 @@ export class Zselect extends React.Component{
                 <svg className="Zselect-moreunfold" aria-hidden="true">
                     <use xlinkHref="#icon-moreunfold"></use>
                 </svg>
-                <ul className={"Zselect-selected-item  "+(this.state.open?"":"Z-height0")} ref={this.ulDom.bind(this)}>
+                <ul className={"Zselect-selected-item  "+(this.state.open?"":"Z-height0")} ref='ulDom'>
                     {this.props.children}
                 </ul>
             </div>
@@ -38,35 +38,36 @@ export class Zselect extends React.Component{
                 selectValue: el.getAttribute('value'),
                 defaultValue: ''
             });
+            const selectedLi = this.refs.ulDom.querySelectorAll('.Zselect-selected-item-li-selected')[0];
+            if(selectedLi) selectedLi.setAttribute('class','Zselect-selected-item');
+            const _className = el.getAttribute('class');
+            el.setAttribute('class',_className+' Zselect-selected-item-li-selected')
         }
-        console.log(this.state);
+
     }
     selectBlur() {
         this.setState({
             open:false
         })
     }
-    ulDom(el) {
-        const elList = [].slice.call(el.childNodes);
-        elList.forEach(item => {
-            if(item.nodeName === 'LI'){
-
+    componentDidMount(){
+        let {defaultValue} = this.props;
+        const el = this.refs.ulDom;
+        const elList = [].slice.call(el.childNodes).filter(item => item.nodeName === 'LI');
+        for(let i = 0;i<elList.length;i++){
+            const item = elList[i];
+            if(defaultValue&&(item.getAttribute('value') == defaultValue)){
+                this.setState({
+                    selectValue:defaultValue,
+                    selectText: item.innerHTML
+                })
+                return;
             }
-        })
-        let {defaultValue} = this.props
-        if(defaultValue){
-            this.setState({
-                selectValue:defaultValue
-            })
         }
-        // this.setState({
-        //     selectText: el.innerHTML,
-        //     selectValue: el.getAttribute('value'),
-        //     defaultValue: ''
-        // });
-    }
-    componentWillMount(){
-
+        this.setState({
+            selectValue:elList[0].getAttribute('value'),
+            selectText: elList[0].innerHTML
+        })
     }
 }
 export const Zoption = (props) => {
