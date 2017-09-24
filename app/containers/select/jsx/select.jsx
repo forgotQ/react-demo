@@ -37,18 +37,23 @@ export class Zselect extends React.Component{
                 selectText: el.innerHTML,
                 selectValue: el.getAttribute('value'),
                 defaultValue: ''
+            },() => {
+                const {selectValue,selectText} = this.state;
+                this.props.onChange(selectValue,selectText);
             });
-            const selectedLi = this.refs.ulDom.querySelectorAll('.Zselect-selected-item-li-selected')[0];
-            if(selectedLi) selectedLi.setAttribute('class','Zselect-selected-item');
-            const _className = el.getAttribute('class');
-            el.setAttribute('class',_className+' Zselect-selected-item-li-selected')
+            this.addSelectClass(this.refs.ulDom,el);
         }
-
     }
     selectBlur() {
         this.setState({
             open:false
         })
+    }
+    addSelectClass(parent,el) {
+        const selectedLi = parent.querySelectorAll('.Zselect-selected-item-li-selected')[0];
+        if(selectedLi) selectedLi.setAttribute('class','Zselect-selected-item-li');
+        const _className = el.getAttribute('class');
+        el.setAttribute('class',_className+' Zselect-selected-item-li-selected')
     }
     componentDidMount(){
         let {defaultValue} = this.props;
@@ -61,13 +66,15 @@ export class Zselect extends React.Component{
                     selectValue:defaultValue,
                     selectText: item.innerHTML
                 })
+                this.addSelectClass(el,item);
                 return;
             }
         }
         this.setState({
             selectValue:elList[0].getAttribute('value'),
             selectText: elList[0].innerHTML
-        })
+        });
+        this.addSelectClass(el,elList[0]);
     }
 }
 export const Zoption = (props) => {

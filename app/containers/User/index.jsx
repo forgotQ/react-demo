@@ -10,14 +10,18 @@ class User extends React.Component {
         return (
             <div>
                 <h1>User</h1>
-                <Zselect>
+                <Zselect defaultValue="2" onChange={this.choose.bind(this)}>
                     <Zoption value="1">第一个</Zoption>
                     <Zoption value="2">第2个</Zoption>
                     <Zoption value="3">第3个</Zoption>
-                    <Zoption value="4">第4个</Zoption>
+                    <Zoption value="3">第3个</Zoption>
+                    <Zoption value="3">第3个</Zoption>
                 </Zselect>
             </div>
         )
+    }
+    choose(value,text){
+        console.log(value,text);
     }
 }
 

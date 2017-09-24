@@ -21,7 +21,7 @@ class City extends React.Component {
             <div className="city-wrapper">
                <div>
                    <select onChange={this.checkProvince.bind(this)}>
-                       <option value="province">请选择省份</option>
+                       <option value="province">选择</option>
                        {this.state.province.map((item,index) => {
                            return(
                                <option value={item.id} key={index}>{item.name}</option>
@@ -29,7 +29,7 @@ class City extends React.Component {
                        })}
                    </select>
                    <select onChange={this.checkCity.bind(this)} value={this.state.selectIndex}>
-                       <option value="city">请选择城市</option>
+                       <option value="city">选择</option>
                        {this.state.city.map((item,index) => {
                            return(
                                <option value={item.id} key={index}>{item.name}</option>
