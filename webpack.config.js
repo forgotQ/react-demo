@@ -1,19 +1,21 @@
 var path = require('path')
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var OpenBrowserPlugin = require('open-browser-webpack-plugin');
-var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
+//var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+//var hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 // var nodeModulesPath = path.resolve(__dirname, 'node_modules')
 // console.log(process.env.NODE_ENV)
 
 module.exports = {
-    entry:[hotMiddlewareScript,'webpack/hot/dev-server',"./app/index"],
+    //entry:[hotMiddlewareScript,'webpack/hot/dev-server',"./app/index"],
+    entry: {
+      app: ["webpack-dev-server/client?http://localhost:8080","webpack/hot/only-dev-server","./app/index"]
+    },
     output: {
         // path: __dirname + "/build",
         path:'/',
         filename: "bundle.js",
         chunkFilename:"[name].[chunkhash:5].chunk.js",
-        //publicPath: '/',
         publicPath: '/'
     },
 

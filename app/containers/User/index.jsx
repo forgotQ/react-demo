@@ -13,9 +13,6 @@ class User extends React.Component {
                 <Zselect defaultValue="2" onChange={this.choose.bind(this)}>
                     <Zoption value="1">第一个</Zoption>
                     <Zoption value="2">第2个</Zoption>
-                    <Zoption value="3">第3个</Zoption>
-                    <Zoption value="3">第3个</Zoption>
-                    <Zoption value="3">第3个</Zoption>
                 </Zselect>
             </div>
         )

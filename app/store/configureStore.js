@@ -6,5 +6,12 @@ export default function configureStore(initialState) {
         // 触发 redux-devtools
         window.devToolsExtension ? window.devToolsExtension() : undefined
     )
+    if (module.hot) {
+        // 解决webpack热更新问题
+        module.hot.accept('../reducers', () => {
+            const nextRootReducer = require('../reducers/index').default;
+            store.replaceReducer(nextRootReducer);
+        });
+    }
     return store
 }
