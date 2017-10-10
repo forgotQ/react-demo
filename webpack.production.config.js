@@ -1,7 +1,5 @@
 var path = require('path')
 var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -24,11 +22,9 @@ module.exports = {
     publicPath: '/',
     chunkFilename:"[name].[chunkhash:5].chunk.js"
   },
-
   resolve:{
       extensions:['', '.js','.jsx']
   },
-
   module: {
     loaders: [
         { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel' },

@@ -42,7 +42,8 @@
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-dev-server": "^1.14.1",
-    "webpack-hot-middleware": "^2.19.1"
+    "webpack-hot-middleware": "^2.19.1",
+    "webpack-merge": "^4.1.0"
   },
   "dependencies": {
     "es6-promise": "^3.2.1",
