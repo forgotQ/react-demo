@@ -40,6 +40,6 @@ new WebpackDevServer(compiler, {
             secure: false
         }
     },
-}).listen(8080, 'localhost', function (err, result) {
+}).listen(8081, 'localhost', function (err, result) {
 
 });
