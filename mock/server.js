@@ -3,7 +3,6 @@ var router = require('koa-router')();
 var mock = require('./mock/index');
 var koaBody = require('koa-body')();
 var path = require('path');
-console.log(app);
 // router.get('/', function *(next) {
 //     this.body = mock.cityList;
 // });
