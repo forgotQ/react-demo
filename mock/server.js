@@ -5,6 +5,7 @@ var koaBody = require('koa-body')();
 var path = require('path');
 console.log(app);
 console.log(path);
+console.log(111111);
 // router.get('/', function *(next) {
 //     this.body = mock.cityList;
 // });
